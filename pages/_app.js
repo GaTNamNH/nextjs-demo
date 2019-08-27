@@ -6,6 +6,7 @@ import withReduxSaga from 'next-redux-saga'
 import configureStore from '../redux'
 import CommonSnackBar from '../dialogs/common-snackbar'
 import ErrorsHandler from '../components/errors-handler'
+import hoistNonReactStatics from 'hoist-non-react-statics'
 import '../i18n'
 import '../styles/styles.scss'
 
@@ -24,13 +25,13 @@ class _App extends App {
     return (
       <Container>
         <Provider store={store}>
-          <CommonSnackBar />
+          <CommonSnackBar t={t} />
           <ErrorsHandler />
-          <Component {...pageProps} {...router} />
+          <Component {...pageProps} {...router} t={t} />
         </Provider>
       </Container>
     )
   }
 }
 
-export default withRedux(configureStore)(withReduxSaga(_App))
+export default withRedux(configureStore)(withReduxSaga(hoistNonReactStatics(withTranslation()(_App), _App)))
