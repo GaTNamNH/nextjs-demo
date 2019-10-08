@@ -8,17 +8,20 @@ import QueryString from "query-string";
 import getConfig from "next/config";
 
 export default class Api {
-  constructor(defaultConfig, preRequest) {
+  constructor(defaultConfig) {
     this.defaultConfig = defaultConfig;
-    this.preRequest = preRequest;
   }
 
   request(url, cookies) {
-    this.defaultConfig = this.preRequest(this.defaultConfig, cookies);
     const { serverRuntimeConfig } = getConfig();
     let prefix = serverRuntimeConfig.onServer
       ? process.env.BASE_URL + "/api"
       : "/api";
+    if (cookies && cookies.token) {
+      this.defaultConfig.headers['Authorization'] = `JWT ${cookies.token}`;
+    } else {
+      delete this.defaultConfig.headers['Authorization']
+    }
     return fetch(prefix + url, this.defaultConfig);
   }
 

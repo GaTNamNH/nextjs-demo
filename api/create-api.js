@@ -13,15 +13,7 @@ export default () => {
     credentials: 'include'
   }
 
-  let api = new Api(apiDefaultConfig, preRequest)
+  let api = new Api(apiDefaultConfig)
   return api
 }
 
-const preRequest = (requestConfig, cookies) => {
-  let extraHeaders = {}
-  if (cookies && cookies.token) {
-    extraHeaders['Authorization'] = `JWT ${cookies.token}`
-  }
-  requestConfig.headers = Object.assign(requestConfig.headers, extraHeaders)
-  return requestConfig
-}
