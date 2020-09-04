@@ -18,6 +18,10 @@ class Post extends Component {
     // return { isServer }
   }
 
+  componentDidMount() {
+    // this.props.login({username: 'test', password: 'test'})
+  }
+
   render() {
     return (
       <Layout {...this.props}>

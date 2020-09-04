@@ -13,11 +13,9 @@ i18next
       resources: {
         vi: {
           translation: {
-            home: 'Trang chủ',
-            about: 'Về tôi',
-            stream: 'Stream',
-            login: 'Đăng nhập',
-            post: 'Bài viết'
+            home_page: {
+              about: 'Về tôi',
+            }
           },
         },
       }

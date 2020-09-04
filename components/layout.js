@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Header from './header'
 import Footer from './footer'
-import { withTranslation } from 'react-i18next'
 import { HeaderMode } from '../constants'
 
 class Layout extends Component {
@@ -37,4 +36,4 @@ Layout.defaultProps = {
   noFooter: false
 }
 
-export default withTranslation()(Layout)
+export default Layout

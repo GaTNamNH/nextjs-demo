@@ -7,6 +7,7 @@ import configureStore from '../redux'
 import CommonSnackBar from '../dialogs/common-snackbar'
 import ErrorsHandler from '../components/errors-handler'
 import hoistNonReactStatics from 'hoist-non-react-statics'
+import { withTranslation } from 'react-i18next'
 import '../i18n'
 import '../styles/styles.scss'
 
